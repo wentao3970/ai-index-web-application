@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tech-Openness Trend</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- D3.js -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
+    <style>
+        body{
+            text-align: center;
+            background-color: #e6e6e6;;
+        }
+        .container{
+            padding-top: 10px;
+            /* padding-bottom: 50px; */
+            border-left: 1px solid #9a9a9a;
+            border-right: 1px solid #9a9a9a;
+            border-top: 0;
+            background-color: white;
+        }
+        #ui-layout{
+            padding: 30px 10px 30px 10px;
+            background-color: #f6f6f6;
+            box-shadow: 0 3px 8px 0 #e7e7e7;
+        }
+        #descrition-section{
+            margin: 50px 0px 20px 0px
+            padding: 10px auto 10px auto
+        }
+        #selecton-section{
+            background-color: #f6f6f6;
+            /* padding-top: 10px; */
+            text-align: left;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: Arial, Sans-Serif;
+        }
+        .contact-section{
+            /* margin: 50px 0px 50px 0px */
+            padding: 20px 0px 20px 0px;
+            background-color: #f6f6f6;
+            box-shadow: 0 3px 8px 0 #e7e7e7;
+        }
+        path {
+            stroke: steelblue;
+            stroke-width: 2;
+            fill: none;
+        }
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: grey;
+            stroke-width: 1;
+            shape-rendering: crispEdges;
+        }
+        .grid .tick {
+            stroke: lightgrey;
+            opacity: 0.7;
+        }
+        .grid path {
+              stroke-width: 0;
+        }
+
+        </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" id='ui-layout'>
+            <div class="col-md">
+                <h1 class="h2">Trust in AI Index Trend</h1>
+            </div>
+        </div>
+
+        <div class= "row" id = "descrition-section" >
+            <div class="col-md" style="text-align: center;">
+                <h5>Description: xxxxxxxx  xx xxx</h5>
+            </div>
+        </div>
+
+        <div class="row" id="selecton-section">
+                <div class="col-md-3">
+                    <p>Platform</p>
+                    <div class="dropdown">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Platform
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Mobile</a>
+                        <a class="dropdown-item" href="#" onclick="Raw_Data_PCA()">PubNetwork</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <p>BreakDown</p>
+                    <div class="dropdown">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">Gender</a>
+                          <a class="dropdown-item" href="#" onclick="Raw_Data_PCA()">Age</a>
+                          <a class="dropdown-item" href="#">Region</a>
+                      </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+        <div class="row" >
+            <div class="col-md" id="main-chart" style='text-align: left'></div>
+        </div>
+        <div class="row" style="font: 20px Arial; margin-bottom: 50px">
+            <div class="col-md-6" id="subchart-1"></div>
+            <div class="col-md-6" id="subchart-2"></div>
+        </div>
+        
+        <div class="contact-section">
+            <h5 class="h2">Contact Info</h5>
+        </div>
+
+
+
+    </div><!-- /container -->
+
+
+    <script>
+        var mobile_trend_data = {{ mobile_trend_data.chart_data | safe }}
+        var trend_by_age_data = {{ trend_by_age_data.chart_data | safe }}
+        var trend_by_region_data = {{ trend_by_region_data.chart_data | safe }}
+        // Set the dimensions of the canvas / graph
+        var margin_main = {top: 20, right: 50, bottom: 80, left: 80},
+            width = 900 - margin_main.left - margin_main.right,
+            height = 600 - margin_main.top - margin_main.bottom;
+
+        var margin_sub1 = {top: 20, right: 50, bottom: 80, left: 80},
+            sub1_width = 1200 - margin_sub1.left - margin_sub1.right,
+            sub1_height = 800 - margin_sub1.top - margin_sub1.bottom;
+
+        // Set the ranges
+        var parseDate = d3.time.format("%Y-%m-%d").parse;
+
+        var x_scale = d3.time.scale()
+            .range([0, width]);
+
+        var x_scale_sub1 = d3.scale.ordinal()
+                            .rangeRoundBands([0, width], .4);
+        var x_scale_sub2 = d3.scale.ordinal()
+                            .rangeRoundBands([0, width], .4);
+
+        var y_scale = d3.scale.linear().range([height, 0]);
+
+        // Define the axes
+        var xAxis = d3.svg.axis()
+                    .scale(x_scale)
+                    .ticks(d3.time.months, 1)
+                    .orient("bottom")
+                    .tickFormat(d3.time.format("%b %Y"));
+                    // .tickSize(0);
+
+        var xAxis_sub1 = d3.svg.axis()
+                    .scale(x_scale_sub1)
+                    .orient("bottom")
+
+        var xAxis_sub2 = d3.svg.axis()
+                    .scale(x_scale_sub2)
+                    .orient("bottom");
+
+        var yAxis = d3.svg.axis()
+                    .scale(y_scale)
+                    .orient("left");
+                    // .ticks(5);
+
+
+
+        var x = d3.scale.linear().range([0, width]);
+        var y = d3.scale.linear().range([height, 0]);
+
+        // Define the axes
+        var xAxist = d3.svg.axis().scale(x)
+            .orient("bottom").ticks(20);
+
+        var yAxist = d3.svg.axis().scale(y)
+            .orient("left").ticks(20);
+
+        // Define the line
+        var valueline = d3.svg.line()
+            .x(function(d,i) { return x(i+1); })
+            .y(function(d) { return y(d.variance); });
+
+        var valueline2 = d3.svg.line()
+          .x(function(d){ return x(d.date);})
+          .y(function(d){ return y(d.open);});
+
+
+        // Define the line
+        // var valueline = d3.svg.line()
+        //     .x(function(d,i) { return x(i+1); })
+        //     .y(function(d) { return y(d.Total_Score); });
+        // var valueline2 = d3.svg.line()
+        //   .x(function(d){ return x(d.date);})
+        //   .y(function(d){ return y(d.open);});
+
+        // Add the svg canvas
+
+
+
+        var svg_main = d3.select("#main-chart")
+            .append("svg")
+                .attr("width", width + margin_main.left + margin_main.right)
+                .attr("height", height + margin_main.top + margin_main.bottom)
+                // .call(responsivefy)
+            .append("g")
+                .attr("transform",
+                      "translate(" + margin_main.left + "," + margin_main.top + ")");
+
+        var svg_sub1 = d3.select("#subchart-1")
+          .append("svg")
+          .attr("width", sub1_width + margin_sub1.left + margin_sub1.right)
+          .attr("height", sub1_height + margin_sub1.top + margin_sub1.bottom)
+          .call(responsivefy)
+          .append("g")
+              .attr("transform",
+                    "translate(" + margin_sub1.left + "," + margin_sub1.top + ")");
+
+        var svg_sub2 = d3.select("#subchart-2")
+          .append("svg")
+          .attr("width", sub1_width + margin_sub1.left + margin_sub1.right)
+          .attr("height", sub1_height + margin_sub1.top + margin_sub1.bottom)
+          .call(responsivefy)
+          .append("g")
+              .attr("transform",
+                    "translate(" + margin_sub1.left + "," + margin_sub1.top + ")");
+
+    function drawdata(){
+        mobile_trend_data.forEach(function(d) {
+            d.Time = parseDate(d.Time);
+            d.Total_Score = d.Total_Score;
+        });
+        // Scale the range of data
+        x_scale.domain(d3.extent(mobile_trend_data, function(d) { return d.Time; }));
+        y_scale.domain(d3.extent(mobile_trend_data, function(d) { return d.Total_Score; }));
+        // y_scale.domain([20, 80]);
+
+        var line = d3.svg.line()
+            .x(function(d) { return x_scale(d.Time); })
+            .y(function(d) { return y_scale(d.Total_Score); });
+
+        // Add the X Axis
+        svg_main.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("transform", "rotate(-30)");
+
+        // Add the Y Axis
+        svg_main.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("dy", "-3.5em")
+            .attr("dx", "-7em")
+            .text("Average Score");
+
+        svg_main.append("path")
+           .datum(mobile_trend_data)
+           .attr("class", "line")
+           .attr("d", line)
+           .attr("opacity", 0)
+           .transition()
+           .duration(500)
+           .attr("opacity", 1);
+
+        svg_main.append("g")
+            .attr("class", "grid")
+            .call(yAxis
+                .tickSize(-width, 0, 0)
+                .tickFormat("")
+        )
+
+        svg_main.selectAll(".dot")
+            .data(mobile_trend_data)
+            .enter().append("circle")
+            .attr("class", "dot")
+            .attr("cx", function(d) { return x_scale(d.Time);})
+            .attr("cy", function(d) { return y_scale(d.Total_Score);})
+            .attr("r", 4)
+            .style("fill", "orange");
+    }
+    drawdata(mobile_trend_data)
+
+
+    function drawdata_svg_sub1(){
+        trend_by_age_data.forEach(function(d) {
+          d.Age = d.Age;
+          d.Total_Score = d.Total_Score;
+        });
+        // Scale the range of the data
+        x_scale_sub1.domain(trend_by_age_data.map(function(d) { return d.Age; }));
+        y_scale.domain([20, 75]);
+
+        // Add the X Axis
+        svg_sub1.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis_sub1)
+
+        // Add Y Axis
+        svg_sub1.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+        svg_sub1.append("g")
+            .attr("class", "grid")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("dy", "-2.5em")
+            .attr("dx", "-5.5em")
+            .text("Average Score");
+
+        svg_sub1.selectAll(".rect")
+            .data(trend_by_age_data)
+            .enter().append("rect")
+            .style("fill", "steelblue")
+            .attr("x", function(d) { return x_scale_sub1(d.Age); })
+            .attr("y", function(d) { return y_scale(d.Total_Score); })
+            .attr("width", 75)
+            .attr("height", function(d) { return height - y_scale(d.Total_Score); });
+    }
+    drawdata_svg_sub1(trend_by_age_data)
+
+    function drawdata_svg_sub2(){
+        trend_by_region_data.forEach(function(d) {
+          d.Region = d.Region;
+          d.Total_Score = d.Total_Score;
+        });
+        // Scale the range of the data
+        x_scale_sub2.domain(trend_by_region_data.map(function(d) { return d.Region; }));
+        y_scale.domain([20, 75]);
+
+        // Add the X Axis
+        svg_sub2.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis_sub2)
+
+        // Add Y Axis
+        svg_sub2.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+
+        svg_sub2.selectAll(".rect")
+            .data(trend_by_region_data)
+            .enter().append("rect")
+            .style("fill", "steelblue")
+            .attr("x", function(d) { return x_scale_sub2(d.Region); })
+            .attr("y", function(d) { return y_scale(d.Total_Score); })
+            .attr("width", 75)
+            .attr("height", function(d) { return height - y_scale(d.Total_Score); });
+    }
+    drawdata_svg_sub2(trend_by_region_data)
+
+
+    function responsivefy(svg) {
+      // container will be the DOM element
+      // that the svg is appended to
+      // we then measure the container
+      // and find its aspect ratio
+      const container = d3.select(svg.node().parentNode),
+          width = parseInt(svg.style('width'), 10),
+          height = parseInt(svg.style('height'), 10),
+          aspect = width / height;
+      // set viewBox attribute to the initial size
+      // control scaling with preserveAspectRatio
+      // resize svg on inital page load
+      svg.attr('viewBox', `0 0 ${width} ${height}`)
+          .attr('preserveAspectRatio', 'xMinYMid')
+          .call(resize);
+      // add a listener so the chart will be resized
+      // when the window resizes
+      // multiple listeners for the same event type
+      // requires a namespace, i.e., 'click.foo'
+      // api docs: https://goo.gl/F3ZCFr
+      d3.select(window).on(
+          'resize.' + container.attr('id'),
+          resize
+      );
+      // his is the code that resizes the chart
+      // it will be called on load
+      // and in response to window resizes
+      // gets the width of the container
+      // and resizes the svg to fill it
+      // while maintaining a consistent aspect ratio
+      function resize() {
+          const w = parseInt(container.style('width'));
+          svg.attr('width', w);
+          svg.attr('height', Math.round(w / aspect));
+      }
+
+    }
+    function Raw_Data_PCA() {
+        $.post("", {'data': 'raw_df'}, function(data_infunc){
+        data2 = JSON.parse(data_infunc.chart_data)
+        console.log(data2);
+        data2.forEach(function(d) {
+        d.variance = d.variance;
+        });
+
+      	x.domain(d3.extent(data2, function(d,i) { return i+1;}));
+        y.domain([0, d3.max(data2, function(d) { return d.variance;})]);
+
+        // Select the section we want to apply our changes to
+        var svg = d3.select("body").transition();
+
+        svg.select(".line")   // change the line
+            .duration(750)
+            .attr("d", valueline(data2));
+        svg.select(".x.axist") // change the x axis
+            .duration(750)
+            .call(xAxis);
+        svg.select(".y.axist") // change the y axis
+            .duration(750)
+            .call(yAxis);
+        svg.selectAll(".dot")
+           .duration(750)
+           .attr("cx", function(d, i) { return x(i+1) })
+           .attr("cy", function(d) { return y(d.variance) })
+           .style("fill", "orange");
+        })
+    }
+
+    function Random_Sampling_PCA() {
+        $.post("", {'data': 'ran_df'}, function(data_infunc){
+        data1 = JSON.parse(data_infunc.chart_data)
+        console.log(data1);
+        data1.forEach(function(d) {
+        d.variance = d.variance;
+        });
+
+        x.domain(d3.extent(data1, function(d,i) { return i+1; }));
+        y.domain([0, d3.max(data1, function(d) { return d.variance; })]);
+
+        var svg = d3.select("body").transition();
+
+        svg.select(".line")   // change the line
+            .duration(750)
+            .attr("d", valueline(data1));
+        svg.select(".x.axis") // change the x axis
+            .duration(750)
+            .call(xAxis);
+        svg.select(".y.axis") // change the y axis
+            .duration(750)
+            .call(yAxis);
+        svg.selectAll(".dot")
+           .duration(750)
+           .attr("cx", function(d, i) { return x(i+1) })
+           .attr("cy", function(d) { return y(d.variance) })
+           .style("fill", "red");
+        })
+    }
+
+
+    function drawdata2() {
+        $.post("", {'data': 'y_str'}, function(data_infunc){
+        data = JSON.parse(data_infunc.chart_data)
+        console.log(data);
+        data.forEach(function(d) {
+        d.variance = d.variance;
+        });
+
+      	x.domain(d3.extent(data, function(d,i) { return i+1; }));
+        y.domain([0, d3.max(data, function(d) { return d.variance; })]);
+
+        var svg = d3.select("body").transition();
+
+        svg.select(".line")   // change the line
+            .duration(750)
+            .attr("d", valueline(data));
+        svg.select(".x.axis") // change the x axis
+            .duration(750)
+            .call(xAxis);
+        svg.select(".y.axis") // change the y axis
+            .duration(750)
+            .call(yAxis);
+        svg.selectAll(".dot")
+           .duration(750)
+           .attr("cx", function(d, i) { return x(i+1) })
+           .attr("cy", function(d) { return y(d.variance) })
+           .style("fill", "green");
+        })
+    }
+    </script>
+
+</body>
+</html>
