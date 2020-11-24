@@ -4,10 +4,15 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech-Openness Trend</title>
     <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel= "stylesheet" href= "{{ url_for('static',filename='css/styles.css') }}"> -->
+    <!-- <link rel="stylesheet" href="static/css/styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}" />
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -16,84 +21,43 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
-    <style>
-        body{
-            text-align: center;
-            background-color: #e6e6e6;;
-        }
-        .container{
-            padding-top: 10px;
-            /* padding-bottom: 50px; */
-            border-left: 1px solid #9a9a9a;
-            border-right: 1px solid #9a9a9a;
-            border-top: 0;
-            background-color: white;
-        }
-        #ui-layout{
-            padding: 30px 10px 30px 10px;
-            background-color: #f6f6f6;
-            box-shadow: 0 3px 8px 0 #e7e7e7;
-        }
-        #descrition-section{
-            margin: 50px 0px 20px 0px
-            padding: 10px auto 10px auto
-        }
-        #selecton-section{
-            background-color: #f6f6f6;
-            /* padding-top: 10px; */
-            text-align: left;
-            font-size: 12px;
-            font-weight: bold;
-            font-family: Arial, Sans-Serif;
-        }
-        .contact-section{
-            /* margin: 50px 0px 50px 0px */
-            padding: 20px 0px 20px 0px;
-            background-color: #f6f6f6;
-            box-shadow: 0 3px 8px 0 #e7e7e7;
-        }
-        path {
-            stroke: white;
-            stroke-width: 2;
-            fill: none;
-        }
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: grey;
-            stroke-width: 3;
-            shape-rendering: crispEdges;
-        }
-        .grid .tick {
-            stroke: lightgrey;
-            opacity: 0.5;
-        }
-        .grid path {
-              stroke-width: 0;
-        }
 
-        </style>
 </head>
 
+
+
 <body>
-    <div class="container">
-        <div class="row" id='ui-layout'>
-            <div class="col-md">
-                <h1 class="h2">Trust in AI Index Trend</h1>
-            </div>
+    <div class="header-section" style="background-image: url('static/images/header_image.jpeg');"></div>
+    <div class="logo-section">
+        <a href="http://www.stonybrook.edu">
+            <img src="static/images/sbu_logo.jpg" width="20%">
+        </a>
+    </div>
+    <div class="bander-section">
+        <div class="project-name">
+            <h1>Trust in AI</h1>
         </div>
+    </div>
 
-        <div class= "row" id = "descrition-section" >
-            <div class="col-md" style="text-align: center;">
-                <h5>Description: xxxxxxxx  xx xxx</h5>
-            </div>
-        </div>
+    <div class= "descrition-section">
+        <p>Lobortis elementum nibh tellus molestie nunc.
+            Sed vulputate odio ut enim blandit.
+            Netus et malesuada fames ac turpis egestas maecenas pharetra.
+            A diam maecenas sed enim ut sem viverra aliquet eget.
+            Ornare quam viverra orci sagittis eu volutpat odio facilisis mauris.
+            Posuere lorem ipsum dolor sit amet consectetur adipiscing.
+            Massa enim nec dui nunc mattis enim ut tellus.
+            Velit scelerisque in dictum non consectetur a erat. Tempus urna et pharetra pharetra massa massa. Malesuada
+        </p>
+    </div>
 
-        <div class="row" id="selecton-section">
-                <div class="col-md-3">
-                    <p>Platform</p>
+        <div class="chart-section">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
                     <div class="dropdown">
-                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Platform
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -102,11 +66,11 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <p>BreakDown</p>
+
+                <div class="col-md-2">
                     <div class="dropdown">
                       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        Breakdown
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <a class="dropdown-item" href="#" onclick="draw_mobile_trend_by_gender()">Gender</a>
@@ -115,32 +79,186 @@
                       </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="chart"></div>
         </div>
 
-        <div class="row" >
-            <div class="col-md" id="main-chart"></div>
-        </div>
-        <div class="row" style="font: 20px Arial; margin-bottom: 50px">
-            <div class="col-md-6" id="subchart-1"></div>
-            <div class="col-md-6" id="subchart-2"></div>
+        <div class="explain-section">
+            <h4>About this index trend</h4>
+
+            <div class="question-section">
+                <h5>Questions</h5>
+            </div>
+            <p>1. Below is a list of technologies. Click on all those make you worried about the future.</p>
+            <ul>
+              <li>Genetic engineering</li>
+              <li>Brain implants</li>
+              <li>Synthetic materials</li>
+              <li>Artificial intelligence</li>
+              <li>Synthetic materials</li>
+              <li>Quantum computing</li>
+              <li>Nuclear power</li>
+              <li>None of the above</li>
+            </ul>
+
+            <p>2. Below is a list of technologies. Click on all those make you worried about the future.</p>
+            <ul>
+                <li>New vaccine development</li>
+                <li>Military drones</li>
+                <li>Self-driving cars</li>
+                <li>Satellite internet service</li>
+                <li>Robotics</li>
+                <li>Facial recognition algorithms</li>
+                <li>None of the above</li>
+            </ul>
+
+            <p>3. Click all of the following technologies you consider yourself informed about.</p>
+            <ul>
+            <li>Genetic engineering</li>
+            <li>Brain implants</li>
+            <li>Synthetic materials</li>
+            <li>Artificial intelligence</li>
+            <li>Quantum computing</li>
+            <li>Nuclear power</li>
+            <li>None of the above</li>
+            </ul>
+
+            <p>4. Click all of the following technologies you consider yourself informed about.</p>
+            <ul>
+                <li>New vaccine development</li></li>
+                <li>Military drones</li>
+                <li>Self-driving cars</li>
+                <li>Satellite internet service</li>
+                <li>Robotics</li>
+                <li>Facial recognition algorithms</li>
+                <li>None of the above</li>
+            </ul>
+            <p>5. How worried are you about *artificial intelligence*?</p>
+            <ul>
+                <li>Seven levels from not worried to very worried</li>
+            </ul>
+            <p>6. How worried are you about self-driving cars?</p>
+            <ul>
+                <li>Seven levels from not worried to very worried</li>
+            </ul>
+            <p>7. How worried are you about facial recognition algorithms?</p>
+            <ul>
+                <li>Seven levels from not worried to very worried</li>
+            </ul>
+            <p>8. Using the following scale, please indicate how much you agree or disagree with the following statement: All in all, most technology provides more benefits than drawbacks</p>
+            <ul>
+                <li>Seven levels from Strongly disagree to very Strongly agree</li>
+            </ul>
+            <p>9. Using the following scale, please indicate how much you agree or disagree with the following statement: Developing new technologies creates more danger to society.</p>
+            <ul>
+                <li>Seven levels from Strongly disagree to very Strongly agree</li>
+            </ul>
+            <p>10. Please name one other technology that you are concerned about.</p>
+            <h5>How it scored</h5>
         </div>
 
         <div class="contact-section">
-            <h5 class="h2">Contact Info</h5>
+            <h4>Organization Name</h4>
+            <h4>Address</h4>
+            <h4>Email and phone</h4>
+            <h4>Relevant links</h4>
         </div>
-    </div><!-- /container -->
 
-    <script>
-        var mobile_data = {{ mobile_data.chart_data | safe }}
+<script>
+    var mobile_data = {{ mobile_data.chart_data | safe }}
 
-        // Set the dimensions of the canvas / graph
-        var margin_main = {top: 20, right: 50, bottom: 80, left: 80},
-            width = 900 - margin_main.left - margin_main.right,
-            height = 600 - margin_main.top - margin_main.bottom;
+    // Set the dimensions of the canvas / graph
+    var margin_main = {top: 20, right: 250, bottom: 80, left: 100},
+        width = 1200 - margin_main.left - margin_main.right,
+        height = 600 - margin_main.top - margin_main.bottom;
 
 
-        // Set the ranges
-        var parseDate = d3.time.format("%Y-%m-%d").parse;
+    // Set the ranges
+    var parseDate = d3.time.format("%Y-%m-%d").parse;
+    var x = d3.time.scale()
+        .range([0, width]);
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    // Define axes
+    var xAxis = d3.svg.axis()
+                .scale(x)
+                .ticks(d3.time.months, 1)
+                .orient("bottom")
+                .tickFormat(d3.time.format("%b %Y"));
+    var yAxis = d3.svg.axis()
+                .scale(y)
+                .orient("left");
+
+    var svg = d3.select(".chart")
+        .append("svg")
+            .attr("width", width + margin_main.left + margin_main.right)
+            .attr("height", height + margin_main.top + margin_main.bottom)
+            // .call(responsivefy)
+        .append("g")
+            .attr("transform",
+                  "translate(" + margin_main.left + "," + margin_main.top + ")");
+
+    function draw_mobile_data(){
+        mobile_data.forEach(function(d) {
+            d.Time = parseDate(d.Time);
+            d.Total_Score = d.Total_Score;
+        });
+
+        // Scale the range of data
+        x.domain(d3.extent(mobile_data, function(d) { return d.Time; }));
+        y.domain([d3.min(mobile_data, function(d) { return (d.Total_Score - 10);}),
+                        d3.max(mobile_data, function(d) { return (d.Total_Score + 10);})]);
+
+        var line = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.Total_Score); });
+
+        // Add the X Axis
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("transform", "rotate(-30)");
+        // Add the Y Axis
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("dy", "-3.5em")
+            .attr("dx", "-7em")
+            .text("Average Score");
+
+        svg.append("path")
+           .datum(mobile_data)
+           .transition()
+           .duration(1000)
+           .attr("class", "line")
+           .style("stroke", "steelblue")
+           .attr("d", line)
+
+        svg.append("g")
+            .attr("class", "grid")
+            .call(yAxis
+                .tickSize(-width, 0, 0)
+                .tickFormat("")
+        )
+    }
+    draw_mobile_data(mobile_data)
+
+
+    function draw_mobile_data2() {
+        $.post("", {'data': 'mobile_df'}, function(data_infunc){
+        mobile_data = JSON.parse(data_infunc.chart_data)
+        mobile_data.forEach(function(d) {
+            d.Time = parseDate(d.Time);
+            d.Total_Score = d.Total_Score;
+        });
+
         var x = d3.time.scale()
             .range([0, width]);
         var y = d3.scale.linear()
@@ -155,8 +273,86 @@
         var yAxis = d3.svg.axis()
                     .scale(y)
                     .orient("left");
+        d3.select("svg").remove();
+        var svg = d3.select(".chart")
+            .append("svg")
+                .attr("width", width + margin_main.left + margin_main.right)
+                .attr("height", height + margin_main.top + margin_main.bottom)
+                // .call(responsivefy)
+            .append("g")
+                .attr("transform",
+                      "translate(" + margin_main.left + "," + margin_main.top + ")");
+        // Scale the range of data
+        x.domain(d3.extent(mobile_data, function(d) { return d.Time; }));
+        y.domain([d3.min(mobile_data, function(d) { return (d.Total_Score - 10);}),
+                        d3.max(mobile_data, function(d) { return (d.Total_Score + 10);})]);
 
-        var svg = d3.select("#main-chart")
+        var line = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.Total_Score); });
+
+        // Add the X Axis
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("transform", "rotate(-30)");
+        // Add the Y Axis
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("dy", "-3.5em")
+            .attr("dx", "-7em")
+            .text("Average Score");
+
+        svg.append("path")
+           .datum(mobile_data)
+           .transition()
+           .duration(1000)
+           .attr("class", "line")
+           .style("stroke", "steelblue")
+           .attr("d", line)
+
+        svg.append("g")
+            .attr("class", "grid")
+            .call(yAxis
+                .tickSize(-width, 0, 0)
+                .tickFormat("")
+        )
+        })
+    }
+
+    function draw_mobile_trend_by_gender(){
+        $.post("", {'data': 'mobile_gender_df'}, function(data_infunc){
+        mobile_gender_data = JSON.parse(data_infunc.chart_data)
+        console.log(mobile_gender_data);
+        mobile_gender_data.forEach(function(d) {
+            d.Time = parseDate(d.Time);
+            d.Male = d.Male;
+            d.Female = d.Female;
+        });
+
+        // var svg = d3.select(".chart").transition();
+        d3.select("svg").remove();
+        var x = d3.time.scale()
+            .range([0, width]);
+        var y = d3.scale.linear()
+            .range([height, 0]);
+
+        // Define axes
+        var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .ticks(d3.time.months, 1)
+                    .orient("bottom")
+                    .tickFormat(d3.time.format("%b %Y"));
+        var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient("left");
+        var svg = d3.select(".chart")
             .append("svg")
                 .attr("width", width + margin_main.left + margin_main.right)
                 .attr("height", height + margin_main.top + margin_main.bottom)
@@ -165,492 +361,389 @@
                 .attr("transform",
                       "translate(" + margin_main.left + "," + margin_main.top + ")");
 
-        function draw_mobile_data(){
-            mobile_data.forEach(function(d) {
-                d.Time = parseDate(d.Time);
-                d.Total_Score = d.Total_Score;
-            });
+        // Scale the range of data
+        x.domain(d3.extent(mobile_gender_data, function(d) {return d.Time;}));
+        y.domain([d3.min(mobile_gender_data, function(d) {return (d.Female - 10);}),
+                        d3.max(mobile_gender_data, function(d) {return (d.Male + 10);})]);
 
-            // Scale the range of data
-            x.domain(d3.extent(mobile_data, function(d) { return d.Time; }));
-            y.domain([d3.min(mobile_data, function(d) { return (d.Total_Score - 10);}),
-                            d3.max(mobile_data, function(d) { return (d.Total_Score + 10);})]);
+        var line_male = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.Male); });
+        var line_female = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.Female); });
 
-            var line = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.Total_Score); });
+        // Add the X Axis
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("transform", "rotate(-30)");
+        // Add the Y Axis
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("dy", "-3.5em")
+            .attr("dx", "-7em")
+            .text("Average Score");
 
-            // Add the X Axis
-            svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis)
-                .selectAll("text")
-                .style("text-anchor", "end")
-                .attr("transform", "rotate(-30)");
-            // Add the Y Axis
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis)
-                .append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("dy", "-3.5em")
-                .attr("dx", "-7em")
-                .text("Average Score");
+        svg.append("path")
+           .datum(mobile_gender_data)
+           .transition()
+           .duration(1000)
+           .attr("class", "line")
+           .attr("stroke-width", 1.5)
+           .style("stroke", "steelblue")
+           .attr("d", line_male)
 
-            svg.append("path")
-               .datum(mobile_data)
-               .transition()
-               .duration(1000)
-               .attr("class", "line")
-               .style("stroke", "steelblue")
-               .attr("d", line)
+       svg.append("path")
+          .datum(mobile_gender_data)
+          .transition()
+          .duration(1000)
+          .attr("class", "line")
+          .attr("d", line_female)
+          .attr("stroke-width", 1.5)
+          .style("stroke", "red")
 
-            svg.append("g")
-                .attr("class", "grid")
-                .call(yAxis
-                    .tickSize(-width, 0, 0)
-                    .tickFormat("")
+        svg.append("g")
+            .attr("class", "grid")
+            .call(yAxis
+                .tickSize(-width, 0, 0)
+                .tickFormat("")
             )
-        }
-        draw_mobile_data(mobile_data)
 
+        svg.append("rect").attr("x", 870).attr("y",50).attr("width", 18).attr("height", 18).style("fill", "steelblue")
+        svg.append("rect").attr("x", 870).attr("y",80).attr("width", 18).attr("height", 18).style("fill", "red")
+        svg.append("text").attr("x", 900).attr("y", 60).text("Male").style("font-size", "18px").attr("alignment-baseline","middle")
+        svg.append("text").attr("x", 900).attr("y", 90).text("Female").style("font-size", "18px").attr("alignment-baseline","middle")
 
-        function draw_mobile_data2() {
-            $.post("", {'data': 'mobile_df'}, function(data_infunc){
-            mobile_data = JSON.parse(data_infunc.chart_data)
-            mobile_data.forEach(function(d) {
-                d.Time = parseDate(d.Time);
-                d.Total_Score = d.Total_Score;
-            });
-            d3.select("svg").remove();
-            var svg = d3.select("#main-chart")
-                .append("svg")
-                    .attr("width", width + margin_main.left + margin_main.right)
-                    .attr("height", height + margin_main.top + margin_main.bottom)
-                    // .call(responsivefy)
-                .append("g")
-                    .attr("transform",
-                          "translate(" + margin_main.left + "," + margin_main.top + ")");
-            // Scale the range of data
-            x.domain(d3.extent(mobile_data, function(d) { return d.Time; }));
-            y.domain([d3.min(mobile_data, function(d) { return (d.Total_Score - 10);}),
-                            d3.max(mobile_data, function(d) { return (d.Total_Score + 10);})]);
+        // svg.append("text")
+        // 	.attr("transform", "translate(" + (width+3) + "," + y(mobile_gender_data[0].Female) + ")")
+        // 	.attr("dy", ".35em")
+        // 	.attr("text-anchor", "start")
+        // 	.style("fill", "red")
+        // 	.text("Female");
+        //
+    	// svg.append("text")
+    	// 	.attr("transform", "translate(" + (width+3) + "," + y(mobile_gender_data[0].Male) + ")")
+    	// 	.attr("dy", ".35em")
+    	// 	.attr("text-anchor", "start")
+    	// 	.style("fill", "steelblue")
+    	// 	.text("Male");
 
-            var line = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.Total_Score); });
+        })
+    }
 
-            // Add the X Axis
-            svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis)
-                .selectAll("text")
-                .style("text-anchor", "end")
-                .attr("transform", "rotate(-30)");
-            // Add the Y Axis
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis)
-                .append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("dy", "-3.5em")
-                .attr("dx", "-7em")
-                .text("Average Score");
+    function draw_mobile_trend_by_age(){
+        $.post("", {'data': 'mobile_age_df'}, function(data_infunc){
+        mobile_age_data = JSON.parse(data_infunc.chart_data)
+        console.log(mobile_age_data);
+        mobile_age_data.forEach(function(d) {
+            d.Time = parseDate(d.Time);
+            d.age_18_24 = d.age_18_24;
+            d.age_25_34 = d.age_25_34;
+            d.age_35_44 = d.age_35_44;
+            d.age_45_54 = d.age_45_54;
+            d.age_55_64 = d.age_55_64;
+            d.age_65_plus = d.age_65_plus;
+        });
 
-            svg.append("path")
-               .datum(mobile_data)
-               .transition()
-               .duration(1000)
-               .attr("class", "line")
-               .style("stroke", "steelblue")
-               .attr("d", line)
+        // var svg = d3.select(".chart").transition();
+        d3.select("svg").remove();
+        var x = d3.time.scale()
+            .range([0, width]);
+        var y = d3.scale.linear()
+            .range([height, 0]);
 
-            svg.append("g")
-                .attr("class", "grid")
-                .call(yAxis
-                    .tickSize(-width, 0, 0)
-                    .tickFormat("")
-            )
-            })
-        }
+        // Define axes
+        var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .ticks(d3.time.months, 1)
+                    .orient("bottom")
+                    .tickFormat(d3.time.format("%b %Y"));
+        var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient("left");
+        var svg = d3.select(".chart")
+            .append("svg")
+                .attr("width", width + margin_main.left + margin_main.right)
+                .attr("height", height + margin_main.top + margin_main.bottom)
+                // .call(responsivefy)
+            .append("g")
+                .attr("transform",
+                      "translate(" + margin_main.left + "," + margin_main.top + ")");
 
-        function draw_mobile_trend_by_gender(){
-            $.post("", {'data': 'mobile_gender_df'}, function(data_infunc){
-            mobile_gender_data = JSON.parse(data_infunc.chart_data)
-            console.log(mobile_gender_data);
-            mobile_gender_data.forEach(function(d) {
-                d.Time = parseDate(d.Time);
-                d.Male = d.Male;
-                d.Female = d.Female;
-            });
+        // Scale the range of data
+        x.domain(d3.extent(mobile_age_data, function(d) {return d.Time; }));
+        y.domain([d3.min(mobile_age_data, function(d) {return (d.age_65_plus - 10);}),
+                        d3.max(mobile_age_data, function(d) {return (d.age_18_24 + 10);})]);
 
-            // var svg = d3.select("#main-chart").transition();
-            d3.select("svg").remove();
-            var svg = d3.select("#main-chart")
-                .append("svg")
-                    .attr("width", width + margin_main.left + margin_main.right)
-                    .attr("height", height + margin_main.top + margin_main.bottom)
-                    // .call(responsivefy)
-                .append("g")
-                    .attr("transform",
-                          "translate(" + margin_main.left + "," + margin_main.top + ")");
+        var line_18_24 = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.age_18_24); });
+        var line_25_34 = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.age_25_34); });
+        var line_35_44 = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.age_35_44); });
+        var line_45_54 = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.age_45_54); });
+        var line_55_64 = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.age_55_64); });
+        var line_65_plus = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.age_65_plus); });
 
-            // Scale the range of data
-            x.domain(d3.extent(mobile_gender_data, function(d) {return d.Time; }));
-            y.domain([d3.min(mobile_gender_data, function(d) {return (d.Male - 10);}),
-                            d3.max(mobile_gender_data, function(d) {return (d.Male + 10);})]);
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("transform", "rotate(-30)");
+        // Add the Y Axis
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("dy", "-3.5em")
+            .attr("dx", "-7em")
+            .text("Average Score");
 
-            var line_male = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.Male); });
-            var line_female = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.Female); });
-
-            svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis)
-                .selectAll("text")
-                .style("text-anchor", "end")
-                .attr("transform", "rotate(-30)");
-            // Add the Y Axis
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis)
-                .append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("dy", "-3.5em")
-                .attr("dx", "-7em")
-                .text("Average Score");
-
-            svg.append("path")
-               .datum(mobile_gender_data)
-               .transition()
-               .duration(1000)
-               .attr("class", "line")
-               .attr("stroke-width", 1.5)
-               .style("stroke", "steelblue")
-               .attr("d", line_male)
-
-           svg.append("path")
-              .datum(mobile_gender_data)
-              .transition()
-              .duration(1000)
-              .attr("class", "line")
-              .attr("d", line_female)
-              .attr("stroke-width", 1.5)
-              .style("stroke", "red")
-
-            svg.append("g")
-                .attr("class", "grid")
-                .call(yAxis
-                    .tickSize(-width, 0, 0)
-                    .tickFormat("")
-                )
-            svg.append("text")
-            	.attr("transform", "translate(" + (width+3) + "," + y(mobile_gender_data[0].Female) + ")")
-            	.attr("dy", ".35em")
-            	.attr("text-anchor", "start")
-            	.style("fill", "red")
-            	.text("Female");
-
-        	svg.append("text")
-        		.attr("transform", "translate(" + (width+3) + "," + y(mobile_gender_data[0].Male) + ")")
-        		.attr("dy", ".35em")
-        		.attr("text-anchor", "start")
-        		.style("fill", "steelblue")
-        		.text("Male");
-
-            })
-        }
-
-        function draw_mobile_trend_by_age(){
-            $.post("", {'data': 'mobile_age_df'}, function(data_infunc){
-            mobile_age_data = JSON.parse(data_infunc.chart_data)
-            console.log(mobile_age_data);
-            mobile_age_data.forEach(function(d) {
-                d.Time = parseDate(d.Time);
-                d.age_18_24 = d.age_18_24;
-                d.age_25_34 = d.age_25_34;
-                d.age_35_44 = d.age_35_44;
-                d.age_45_54 = d.age_45_54;
-                d.age_55_64 = d.age_55_64;
-                d.age_65_plus = d.age_65_plus;
-            });
-
-            // var svg = d3.select("#main-chart").transition();
-            d3.select("svg").remove();
-            var svg = d3.select("#main-chart")
-                .append("svg")
-                    .attr("width", width + margin_main.left + margin_main.right)
-                    .attr("height", height + margin_main.top + margin_main.bottom)
-                    // .call(responsivefy)
-                .append("g")
-                    .attr("transform",
-                          "translate(" + margin_main.left + "," + margin_main.top + ")");
-
-            // Scale the range of data
-            x.domain(d3.extent(mobile_age_data, function(d) {return d.Time; }));
-            y.domain([d3.min(mobile_age_data, function(d) {return (d.age_65_plus - 10);}),
-                            d3.max(mobile_age_data, function(d) {return (d.age_18_24 + 10);})]);
-
-            var line_18_24 = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.age_18_24); });
-            var line_25_34 = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.age_25_34); });
-            var line_35_44 = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.age_35_44); });
-            var line_45_54 = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.age_45_54); });
-            var line_55_64 = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.age_55_64); });
-            var line_65_plus = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.age_65_plus); });
-
-            svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis)
-                .selectAll("text")
-                .style("text-anchor", "end")
-                .attr("transform", "rotate(-30)");
-            // Add the Y Axis
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis)
-                .append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("dy", "-3.5em")
-                .attr("dx", "-7em")
-                .text("Average Score");
-
-            svg.append("path")
-               .datum(mobile_age_data)
-               .transition()
-               .duration(1000)
-               .attr("class", "line")
-               .attr("stroke-width", 1.5)
-               .style("stroke", "steelblue")
-               .attr("d", line_18_24)
-           svg.append("path")
-              .datum(mobile_age_data)
-              .transition()
-              .duration(1000)
-              .attr("class", "line")
-              .style("stroke", "orange")
-              .attr("d", line_25_34)
-          svg.append("path")
-             .datum(mobile_age_data)
-             .transition()
-             .duration(1000)
-             .attr("class", "line")
-             .style("stroke", "green")
-             .attr("d", line_35_44)
-
-         svg.append("path")
-            .datum(mobile_age_data)
-            .transition()
-            .duration(1000)
-            .attr("class", "line")
-            .attr("stroke-width", 1.5)
-            .style("stroke", "red")
-            .attr("d", line_45_54)
-
-         svg.append("path")
+        svg.append("path")
            .datum(mobile_age_data)
            .transition()
            .duration(1000)
            .attr("class", "line")
-           .style("stroke", "purple")
-           .attr("d", line_55_64)
-
-         svg.append("path")
-          .datum(mobile_age_data)
-          .transition()
-          .duration(1000)
-          .attr("class", "line")
-          .style("stroke", "brown")
-          .attr("d", line_65_plus)
-
-            svg.append("g")
-                .attr("class", "grid")
-                .call(yAxis
-                    .tickSize(-width, 0, 0)
-                    .tickFormat("")
-                )
-            // svg.append("text")
-            // 	.attr("transform", "translate(" + (width+3) + "," + y(mobile_age_data[0].Female) + ")")
-            // 	.attr("dy", ".35em")
-            // 	.attr("text-anchor", "start")
-            // 	.style("fill", "red")
-            // 	.text("Female");
-            //
-        	// svg.append("text")
-        	// 	.attr("transform", "translate(" + (width+3) + "," + y(mobile_age_data[0].Male) + ")")
-        	// 	.attr("dy", ".35em")
-        	// 	.attr("text-anchor", "start")
-        	// 	.style("fill", "steelblue")
-        	// 	.text("Male");
-
-            })
-        }
-
-
-        function draw_mobile_trend_by_region(){
-            $.post("", {'data': 'mobile_region_df'}, function(data_infunc){
-            mobile_region_data = JSON.parse(data_infunc.chart_data)
-            console.log(mobile_region_data);
-            mobile_region_data.forEach(function(d) {
-                d.Time = parseDate(d.Time);
-                d.ne = d.ne;
-                d.mw = d.mw;
-                d.west = d.west;
-                d.south = d.south;
-            });
-
-            // var svg = d3.select("#main-chart").transition();
-            d3.select("svg").remove();
-            var svg = d3.select("#main-chart")
-                .append("svg")
-                    .attr("width", width + margin_main.left + margin_main.right)
-                    .attr("height", height + margin_main.top + margin_main.bottom)
-                    // .call(responsivefy)
-                .append("g")
-                    .attr("transform",
-                          "translate(" + margin_main.left + "," + margin_main.top + ")");
-
-            // Scale the range of data
-            x.domain(d3.extent(mobile_region_data, function(d) {return d.Time; }));
-            y.domain([d3.min(mobile_region_data, function(d) {return (d.south - 10);}),
-                            d3.max(mobile_region_data, function(d) {return (d.ne + 10);})]);
-
-            var line_ne = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.ne); });
-            var line_mw = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.mw); });
-            var line_west = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.west); });
-            var line_south = d3.svg.line()
-                .x(function(d) { return x(d.Time); })
-                .y(function(d) { return y(d.south); });
-
-            svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis)
-                .selectAll("text")
-                .style("text-anchor", "end")
-                .attr("transform", "rotate(-30)");
-
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis)
-                .append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("dy", "-3.5em")
-                .attr("dx", "-7em")
-                .text("Average Score");
-
-            svg.append("path")
-               .datum(mobile_region_data)
-               .transition()
-               .duration(1000)
-               .attr("class", "line")
-               .style("stroke", "steelblue")
-               .attr("d", line_ne)
-           svg.append("path")
-              .datum(mobile_region_data)
-              .transition()
-              .duration(1000)
-              .attr("class", "line")
-              .style("stroke", "orange")
-              .attr("d", line_mw)
-          svg.append("path")
-             .datum(mobile_region_data)
-             .transition()
-             .duration(1000)
-             .attr("class", "line")
-             .style("stroke", "green")
-             .attr("d", line_west)
-
-         svg.append("path")
-            .datum(mobile_region_data)
+           .attr("stroke-width", 1.5)
+           .style("stroke", "steelblue")
+           .attr("d", line_18_24)
+        svg.append("path")
+            .datum(mobile_age_data)
             .transition()
             .duration(1000)
             .attr("class", "line")
-            .attr("stroke-width", 1.5)
+            .style("stroke", "orange")
+            .attr("d", line_25_34)
+        svg.append("path")
+            .datum(mobile_age_data)
+            .transition()
+            .duration(1000)
+            .attr("class", "line")
+            .style("stroke", "green")
+            .attr("d", line_35_44)
+
+        svg.append("path")
+            .datum(mobile_age_data)
+            .transition()
+            .duration(1000)
+            .attr("class", "line")
             .style("stroke", "red")
-            .attr("d", line_south)
+            .attr("d", line_45_54)
+
+        svg.append("path")
+            .datum(mobile_age_data)
+            .transition()
+            .duration(1000)
+            .attr("class", "line")
+            .style("stroke", "#e377c2")
+            .attr("d", line_55_64)
+
+        svg.append("path")
+            .datum(mobile_age_data)
+            .transition()
+            .duration(1000)
+            .attr("class", "line")
+            .style("stroke", "brown")
+            .attr("d", line_65_plus)
+
+        svg.append("g")
+            .attr("class", "grid")
+            .call(yAxis
+                .tickSize(-width, 0, 0)
+                .tickFormat("")
+            )
+        svg.append("rect").attr("x",870).attr("y",50).attr("width", 18).attr("height", 18).style("fill", "steelblue")
+        svg.append("rect").attr("x",870).attr("y",80).attr("width", 18).attr("height", 18).style("fill", "orange")
+        svg.append("rect").attr("x",870).attr("y",110).attr("width", 18).attr("height", 18).style("fill", "green")
+        svg.append("rect").attr("x",870).attr("y",140).attr("width", 18).attr("height", 18).style("fill", "red")
+        svg.append("rect").attr("x",870).attr("y",170).attr("width", 18).attr("height", 18).style("fill", "#e377c2")
+        svg.append("rect").attr("x",870).attr("y",200).attr("width", 18).attr("height", 18).style("fill", "brown")
+
+        svg.append("text").attr("x", 900).attr("y", 60).text("18-24").style("font-size", "18px").attr("alignment-baseline","middle")
+        svg.append("text").attr("x", 900).attr("y", 90).text("25-34").style("font-size", "18px").attr("alignment-baseline","middle")
+        svg.append("text").attr("x", 900).attr("y", 120).text("35-44").style("font-size", "18px").attr("alignment-baseline","middle")
+        svg.append("text").attr("x", 900).attr("y", 150).text("45-54").style("font-size", "18px").attr("alignment-baseline","middle")
+        svg.append("text").attr("x", 900).attr("y", 180).text("55-64").style("font-size", "18px").attr("alignment-baseline","middle")
+        svg.append("text").attr("x", 900).attr("y", 210).text("65+").style("font-size", "18px").attr("alignment-baseline","middle")
+        })
+    }
 
 
-            svg.append("g")
-                .attr("class", "grid")
-                .call(yAxis
-                    .tickSize(-width, 0, 0)
-                    .tickFormat("")
-                )
-            // svg.append("text")
-            // 	.attr("transform", "translate(" + (width+3) + "," + y(mobile_age_data[0].Female) + ")")
-            // 	.attr("dy", ".35em")
-            // 	.attr("text-anchor", "start")
-            // 	.style("fill", "red")
-            // 	.text("Female");
-            //
-        	// svg.append("text")
-        	// 	.attr("transform", "translate(" + (width+3) + "," + y(mobile_age_data[0].Male) + ")")
-        	// 	.attr("dy", ".35em")
-        	// 	.attr("text-anchor", "start")
-        	// 	.style("fill", "steelblue")
-        	// 	.text("Male");
+    function draw_mobile_trend_by_region(){
+        $.post("", {'data': 'mobile_region_df'}, function(data_infunc){
+        mobile_region_data = JSON.parse(data_infunc.chart_data)
+        console.log(mobile_region_data);
+        mobile_region_data.forEach(function(d) {
+            d.Time = parseDate(d.Time);
+            d.ne = d.ne;
+            d.mw = d.mw;
+            d.west = d.west;
+            d.south = d.south;
+        });
 
-            })
-        }
+        // var svg = d3.select(".chart").transition();
+        d3.select("svg").remove();
+        var x = d3.time.scale()
+            .range([0, width]);
+        var y = d3.scale.linear()
+            .range([height, 0]);
+
+        // Define axes
+        var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .ticks(d3.time.months, 1)
+                    .orient("bottom")
+                    .tickFormat(d3.time.format("%b %Y"));
+        var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient("left");
+        var svg = d3.select(".chart")
+            .append("svg")
+                .attr("width", width + margin_main.left + margin_main.right)
+                .attr("height", height + margin_main.top + margin_main.bottom)
+                // .call(responsivefy)
+            .append("g")
+                .attr("transform",
+                      "translate(" + margin_main.left + "," + margin_main.top + ")");
+
+        // Scale the range of data
+        x.domain(d3.extent(mobile_region_data, function(d) {return d.Time;}));
+        y.domain([d3.min(mobile_region_data, function(d) {return (d.south - 10);}),
+                        d3.max(mobile_region_data, function(d) {return (d.ne + 10);})]);
+
+        var line_ne = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.ne); });
+        var line_mw = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.mw); });
+        var line_west = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.west); });
+        var line_south = d3.svg.line()
+            .x(function(d) { return x(d.Time); })
+            .y(function(d) { return y(d.south); });
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("transform", "rotate(-30)");
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("dy", "-3.5em")
+            .attr("dx", "-7em")
+            .text("Average Score");
+
+        svg.append("path")
+           .datum(mobile_region_data)
+           .transition()
+           .duration(1000)
+           .attr("class", "line")
+           .style("stroke", "steelblue")
+           .attr("d", line_ne)
+       svg.append("path")
+          .datum(mobile_region_data)
+          .transition()
+          .duration(1000)
+          .attr("class", "line")
+          .style("stroke", "orange")
+          .attr("d", line_mw)
+      svg.append("path")
+         .datum(mobile_region_data)
+         .transition()
+         .duration(1000)
+         .attr("class", "line")
+         .style("stroke", "green")
+         .attr("d", line_west)
+
+     svg.append("path")
+        .datum(mobile_region_data)
+        .transition()
+        .duration(1000)
+        .attr("class", "line")
+        .attr("stroke-width", 1.5)
+        .style("stroke", "red")
+        .attr("d", line_south)
 
 
-        function Raw_Data_PCA() {
-            $.post("", {'data': 'raw_df'}, function(data_infunc){
-            data2 = JSON.parse(data_infunc.chart_data)
-            console.log(data2);
-            data2.forEach(function(d) {
-            d.variance = d.variance;
-            });
+        svg.append("g")
+            .attr("class", "grid")
+            .call(yAxis
+                .tickSize(-width, 0, 0)
+                .tickFormat("")
+            )
+            svg.append("rect").attr("x",870).attr("y",50).attr("width", 18).attr("height", 18).style("fill", "steelblue")
+            svg.append("rect").attr("x",870).attr("y",80).attr("width", 18).attr("height", 18).style("fill", "orange")
+            svg.append("rect").attr("x",870).attr("y",110).attr("width", 18).attr("height", 18).style("fill", "green")
+            svg.append("rect").attr("x",870).attr("y",140).attr("width", 18).attr("height", 18).style("fill", "red")
 
-          	x.domain(d3.extent(data2, function(d,i) { return i+1;}));
-            y.domain([0, d3.max(data2, function(d) { return d.variance;})]);
 
-            // Select the section we want to apply our changes to
-            var svg = d3.select("body").transition();
+            svg.append("text").attr("x", 900).attr("y", 60).text("Northeast").style("font-size", "18px").attr("alignment-baseline","middle")
+            svg.append("text").attr("x", 900).attr("y", 90).text("Midwest").style("font-size", "18px").attr("alignment-baseline","middle")
+            svg.append("text").attr("x", 900).attr("y", 120).text("West").style("font-size", "18px").attr("alignment-baseline","middle")
+            svg.append("text").attr("x", 900).attr("y", 150).text("South").style("font-size", "18px").attr("alignment-baseline","middle")
+        })
+    }
 
-            svg.select(".line")   // change the line
-                .duration(750)
-                .attr("d", valueline(data2));
-            svg.select(".x.axist") // change the x axis
-                .duration(750)
-                .call(xAxis);
-            svg.select(".y.axist") // change the y axis
-                .duration(750)
-                .call(yAxis);
-            svg.selectAll(".dot")
-               .duration(750)
-               .attr("cx", function(d, i) { return x(i+1) })
-               .attr("cy", function(d) { return y(d.variance) })
-               .style("fill", "orange");
-            })
-        }
 
-    </script>
+    function Raw_Data_PCA() {
+        $.post("", {'data': 'raw_df'}, function(data_infunc){
+        data2 = JSON.parse(data_infunc.chart_data)
+        console.log(data2);
+        data2.forEach(function(d) {
+        d.variance = d.variance;
+        });
+
+      	x.domain(d3.extent(data2, function(d,i) { return i+1;}));
+        y.domain([0, d3.max(data2, function(d) { return d.variance;})]);
+
+        // Select the section we want to apply our changes to
+        var svg = d3.select("body").transition();
+
+        svg.select(".line")   // change the line
+            .duration(750)
+            .attr("d", valueline(data2));
+        svg.select(".x.axist") // change the x axis
+            .duration(750)
+            .call(xAxis);
+        svg.select(".y.axist") // change the y axis
+            .duration(750)
+            .call(yAxis);
+        svg.selectAll(".dot")
+           .duration(750)
+           .attr("cx", function(d, i) { return x(i+1) })
+           .attr("cy", function(d) { return y(d.variance) })
+           .style("fill", "orange");
+        })
+    }
+
+</script>
 
 </body>
 </html>
